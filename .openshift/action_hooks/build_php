@@ -116,7 +116,7 @@ function install_php() {
         --with-config-file-path=${ROOT_DIR}/etc/php7 \
         --with-config-file-scan-dir=${ROOT_DIR}/etc/php7/conf.d \
         --with-icu-dir=${ROOT_DIR}/icu \
-        --with-mcrypt=${ROOT_DIR}/libs \
+        --with-mcrypt=${ROOT_DIR}/libmcrypt/lib64 \
         --with-layout=PHP \
         --with-curl \
         --with-pear \
