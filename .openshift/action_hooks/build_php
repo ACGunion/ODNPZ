@@ -96,7 +96,7 @@ function install_php() {
     local pkg=php-${PHP_VERSION}.tar.gz
 
     mkdir -p ${BUILD_DIR}
-    mkdir -p ${ROOT_DIR}/etc/php5/conf.d
+    mkdir -p ${ROOT_DIR}/etc/php7/conf.d
     pushd ${BUILD_DIR}
 
     echo "正在下载${pkg}。"
@@ -109,9 +109,9 @@ function install_php() {
     echo "正在配置PHP。"
     ./configure \
         --with-libdir=lib64 \
-        --prefix=${ROOT_DIR}/php5 \
-        --with-config-file-path=${ROOT_DIR}/etc/php5 \
-        --with-config-file-scan-dir=${ROOT_DIR}/etc/php5/conf.d \
+        --prefix=${ROOT_DIR}/php7 \
+        --with-config-file-path=${ROOT_DIR}/etc/php7 \
+        --with-config-file-scan-dir=${ROOT_DIR}/etc/php7/conf.d \
         --with-icu-dir=${ROOT_DIR}/icu \
         --with-layout=PHP \
         --with-curl \
@@ -160,12 +160,12 @@ function install_php() {
     local ini=${TEMPLATE_DIR}/php.ini.tmpl
     if [[ -e  ${ini} ]]; then
         echo "Copy ini for ${1}。"
-        yes | cp ${ini} ${ROOT_DIR}/etc/php5/php.ini
+        yes | cp ${ini} ${ROOT_DIR}/etc/php7/php.ini
     fi
     local ini=${TEMPLATE_DIR}/php_extra.ini.tmpl
     if [[ -e  ${ini} ]]; then
         echo "Copy ini for ${1}。"
-        yes | cp ${ini} ${ROOT_DIR}/etc/php5/conf.d/php_extra.ini
+        yes | cp ${ini} ${ROOT_DIR}/etc/php7/conf.d/php_extra.ini
     fi
 
     echo "清空编译目录。"
