@@ -107,12 +107,16 @@ function install_php() {
     pushd php-${PHP_VERSION}
 
     echo "正在配置PHP。"
+    #php7
+    #./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-iconv-dir --with-freetype-dir=/usr/local/freetype --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-intl --enable-pcntl --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --with-gettext --disable-fileinfo --enable-opcache --with-xsl ${PHP_Modules_Options}
+
     ./configure \
         --with-libdir=lib64 \
         --prefix=${ROOT_DIR}/php7 \
         --with-config-file-path=${ROOT_DIR}/etc/php7 \
         --with-config-file-scan-dir=${ROOT_DIR}/etc/php7/conf.d \
         --with-icu-dir=${ROOT_DIR}/icu \
+        --with-mcrypt=${ROOT_DIR}/libs \
         --with-layout=PHP \
         --with-curl \
         --with-pear \
@@ -151,7 +155,8 @@ function install_php() {
         --enable-sysvsem \
         --enable-sysvshm \
         --enable-sysvmsg \
-        --enable-intl
+        --enable-intl \
+        --enable-opcache
 
     echo "完成配置PHP。"
     make install
