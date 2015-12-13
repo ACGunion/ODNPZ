@@ -15,4 +15,4 @@ ${OPENSHIFT_HOMEDIR}/diy/runtime/nginx/sbin/nginx
 
 #启动php-fpm
 echo "正在启动php-fpm。"
-${OPENSHIFT_HOMEDIR}/diy/runtime/php5/sbin/php-fpm
+${OPENSHIFT_HOMEDIR}/diy/runtime/php7/sbin/php-fpm

@@ -9,7 +9,7 @@ source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/common
 #设置相对目录
 BUILD_DIR=${OPENSHIFT_TMP_DIR}/build
 NGINX_DIR=${OPENSHIFT_RUNTIME_DIR}/nginx/
-PHP_DIR=${OPENSHIFT_RUNTIME_DIR}/php5/
+PHP_DIR=${OPENSHIFT_RUNTIME_DIR}/php7/
 TEMPLATE_DIR=${OPENSHIFT_REPO_DIR}/.openshift/tmpl
 ZGL_DIR=${PHP_DIR}/lib/php/extensions/no-debug-non-zts-20090626/ZendGuardLoader.so
 
@@ -32,7 +32,7 @@ cp ${BUILD_DIR}/php-fpm.conf ${PHP_DIR}/etc/php-fpm.conf
 echo "正在预处理PHP.ini。"
 cp ${TEMPLATE_DIR}/php.ini.tmpl ${BUILD_DIR}/php.ini
 perl -p -i -e 's/\$\{([^}]+)\}/defined $ENV{$1} ? $ENV{$1} : $&/eg' ${BUILD_DIR}/php.ini
-cp ${BUILD_DIR}/php.ini ${OPENSHIFT_RUNTIME_DIR}/etc/php5/php.ini
+cp ${BUILD_DIR}/php.ini ${OPENSHIFT_RUNTIME_DIR}/etc/php7/php.ini
 
 echo "正在预处理Zend配置"
 cp ${TEMPLATE_DIR}/zgl.ini.tmpl ${BUILD_DIR}/zgl.ini
